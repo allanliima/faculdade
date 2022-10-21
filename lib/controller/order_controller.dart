@@ -1,4 +1,3 @@
-
 import 'package:abctechapp/model/assist.dart';
 import 'package:abctechapp/model/order.dart';
 import 'package:abctechapp/model/order_created.dart';
@@ -41,6 +40,7 @@ class OrderController extends GetxController with StateMixin<OrderCreated> {
   }
 
   finishStartOrder() {
+    if (!formKey.currentState!.validate()) return;
     switch (screenState.value) {
       case OrderState.creating:
         _geolocationService.getPosition().then((value) {
